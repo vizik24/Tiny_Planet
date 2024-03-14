@@ -2,7 +2,7 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.133.0/build/three.module
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.133.0/examples/jsm/loaders/GLTFLoader.js';
 
 let camera, scene, renderer, model, character;
-let rotationSpeed = 0.005; // Adjust the rotation speed here
+let rotationSpeed = 0.005; // Adjust roatation speed
 let keysPressed = {};
 
 init();
@@ -17,15 +17,15 @@ function init() {
 
     // Create a directional light
     const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(0, 0, 1); // Set the light direction to face the model
+    light.position.set(0, 0, 1); // Setlight direction to face the model
     scene.add(light);
 
     // Load Blender model
     const loader = new GLTFLoader();
     loader.load('models/planet2.glb', function(gltf) {
         model = gltf.scene;
-        console.log("Model loaded:", model); // Add this line
-        model.scale.set(1, 1, 1); // Scale the model up by 1.5x
+        console.log("Model loaded:", model); 
+        model.scale.set(1, 1, 1); // Scale the model
 
         // Set the position of the planet to the origin (0, 0, 0)
         model.position.set(0, 0, 0);
@@ -88,7 +88,7 @@ function onKeyDown(event) {
     keysPressed[event.keyCode] = true;
 
     // Rotate the character instantly to match the rotation of the planet.
-    // could also set facing to the direction character facing  to trigger different
+    // could also set facing to the direction character facing to trigger different animations
     
     if (event.keyCode === 37) { // Left arrow
         character.rotation.y = - (Math.PI/2);
@@ -105,7 +105,6 @@ function onKeyDown(event) {
 function onKeyUp(event) {
     keysPressed[event.keyCode] = false;
 }
-
 
 
 function createCharacter() {
